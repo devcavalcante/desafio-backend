@@ -35,7 +35,6 @@ class AuthController extends Controller
         } catch (AuthorizationException $exception) {
             return response()->json(['errors' => $exception->getMessage()], 401);
         } catch (\Exception $exception) {
-            dd($exception->getMessage());
             return response()->json(['errors' =>  $exception->getMessage()], 500);
         }
     }

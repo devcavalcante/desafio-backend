@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckTypeUser
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class CheckTypeUser
     {
         $types = array_slice(func_get_args(), 2);
         foreach ($types as $type) {
-            if (auth()->user()->type_user->type === $type) {
+            if (auth()->user()->role->type === $type) {
                 return $next($request);
             }
         }
