@@ -16,3 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('/login', ['as' => 'login', 'uses' => 'AuthController@authenticate']);
+$router->get('/user', ['uses' => 'UserController@index']);
+$router->get('/type_user', ['uses' => 'UserController@showTypeUser']);
