@@ -19,9 +19,9 @@ $ php artisan db:seed #para gerar os seeders dos tipos de usuários <br>
 $ php -S localhost:8000 -t public <br>
 
 ## Para subir no docker
-Digite no terminal:
-$ docker-compose up -d --build
-- Obs.: Caso de erro de permissão na pasta storage apenas rode na sua máquina local o comando: chmod -R 777 ./storage
+Digite no terminal: <br>
+$ docker-compose up -d --build <br>
+- Obs.: Caso de erro de permissão na pasta storage apenas rode na sua máquina local o comando: chmod -R 777 ./storage 
 - Abra o arquivo .env e faça as configurações para conectar ao seu banco.
 DB_CONNECTION=pgsql  
 DB_HOST=db  
@@ -29,8 +29,6 @@ DB_PORT=5432
 DB_DATABASE= desafio-backend  
 DB_USERNAME=postgres  
 DB_PASSWORD=postgres
-
-## Para subir no docker
-Digite no terminal
+Digite no terminal <br>
 $ docker-compose exec web sh
 $ php artisa migrate:fresh --seed
