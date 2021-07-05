@@ -16,8 +16,8 @@ Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinhei
 - Usuários comuns podem fazer transferências de uma conta para outra 
 
 ## Como rodar esse projeto local
-No terminal:
-$ git clone https://github.com/devcavalcante/desafio-backend.git
+No terminal: <br>
+$ git clone https://github.com/devcavalcante/desafio-backend.git  <br>
 $ cd desafio-backend <br>
 $ composer install <br>
 $ cp .env.example .env <br>
