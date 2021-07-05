@@ -8,16 +8,9 @@ use App\Exceptions\CheckMoneyException;
 use App\Exceptions\FailTransactionException;
 use App\Exceptions\UserHasNoMoneyException;
 use App\Models\Transaction;
-use App\Models\User;
 use App\Models\Wallet;
-use App\Services\MockyService;
-use App\Services\PagSeguro;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Prophecy\Exception\Prediction\FailedPredictionException;
 use Ramsey\Uuid\Uuid;
 
 class TransactionRepository
@@ -34,9 +27,12 @@ class TransactionRepository
             throw new CheckMoneyException('cannot transfer 0', 403);
         }
 
-
         if (!$this->authorizeUserMakeTransaction()) {
             throw new FailTransactionException('Unauthorized. Try again later', 401);
+        }
+
+        if (Auth::id() == $fields['payee_id']) {
+            throw new FailTransactionException('forbidden to transfer to yourself', 403);
         }
         return $this->makeTransfer($fields);
     }
@@ -56,17 +52,17 @@ class TransactionRepository
     {
         $transfer = [
             'id' => Uuid::uuid4()->toString(),
-            'payer_id' => Auth::user()->wallet->id,
+            'payer_id' => Auth::id(),
             'payee_id' => $fields['payee_id'],
             'value' => $fields['value']
         ];
 
         $transaction = Transaction::create($transfer);
-        $walletPayer = $transaction->payer;
+        $walletPayer = $transaction->payer->wallet;
         $walletPayer->balance = $walletPayer->balance - $fields['value'];
         $walletPayer->save();
 
-        $walletPayee = $transaction->payee;
+        $walletPayee = $transaction->payee->wallet;
         $walletPayee->balance = $walletPayee->balance + $fields['value'];
         $walletPayee->save();
 

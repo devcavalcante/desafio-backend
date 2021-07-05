@@ -17,9 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->uuid('id')->primary();
             $table->decimal('value', 10, 2);
             $table->uuid('payer_id');
-            $table->foreign('payer_id')->references('id')->on('wallets');
+            $table->foreign('payer_id')->references('id')->on('users');
             $table->uuid('payee_id');
-            $table->foreign('payee_id')->references('id')->on('wallets');
+            $table->foreign('payee_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

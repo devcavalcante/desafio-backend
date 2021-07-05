@@ -53,7 +53,6 @@ class TransactionController extends Controller
             return response()->json(['errors' => $th->getMessage()], $th->getCode());
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e);
             return response()->json(['errors' => $e->getMessage()], $e->getCode());
         }
     }
