@@ -29,9 +29,10 @@ DB_PORT=5432
 DB_DATABASE= desafio-backend  
 DB_USERNAME=postgres  
 DB_PASSWORD=postgres <br>
+<br>
 Digite no terminal <br>
 $ docker-compose exec web sh <br>
-$ php artisa migrate:fresh --seed
+$ php artisan migrate:fresh --seed
 
 ## Rotas
 / (GET): Cria um usuário (podendo ser do tipo lojista ou normal, verificar a role_id) <br>
