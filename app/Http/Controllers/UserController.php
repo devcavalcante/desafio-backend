@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -11,15 +12,23 @@ class UserController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
+    public function getUserLogged()
     {
-        $user = Auth::user();
-        return response()->json(["user" => $user], 200);
+        try {
+            $user = Auth::user();
+            return response()->json(["user" => $user], 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function showTypeUser()
     {
-        $typeUser = Auth::user()->role->type;
-        return response()->json(["type_user" => $typeUser], 200);
+        try {
+            $typeUser = Auth::user()->role->type;
+            return response()->json(["type_user" => $typeUser], 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

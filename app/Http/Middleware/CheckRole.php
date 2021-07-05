@@ -21,6 +21,6 @@ class CheckRole
                 return $next($request);
             }
         }
-        return response()->json(["Errors" => ["user" => "User needs authorization"]], 403);
+        return response()->json(["Errors" => 'shopkeeper cannot transfer'], 403);
     }
 }
