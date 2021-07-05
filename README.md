@@ -28,7 +28,7 @@ DB_HOST=db
 DB_PORT=5432  
 DB_DATABASE= desafio-backend  
 DB_USERNAME=postgres  
-DB_PASSWORD=postgres
+DB_PASSWORD=postgres <br>
 Digite no terminal <br>
 $ docker-compose exec web sh <br>
 $ php artisa migrate:fresh --seed
