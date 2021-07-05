@@ -32,3 +32,10 @@ DB_PASSWORD=postgres <br>
 Digite no terminal <br>
 $ docker-compose exec web sh <br>
 $ php artisa migrate:fresh --seed
+
+## Rotas
+/ (GET): Cria um usuário (podendo ser do tipo lojista ou normal, verificar a role_id)
+/login (POST): Usuário é autenticado no sistema
+/user (GET): Pega o usuário que está logado no sistema
+/type_user: (GET): Exibe o tipo do usuário logado no sistema
+/transaction (POST): Realiza a transação entre usuários
