@@ -34,8 +34,8 @@ $ docker-compose exec web sh <br>
 $ php artisa migrate:fresh --seed
 
 ## Rotas
-/ (GET): Cria um usuário (podendo ser do tipo lojista ou normal, verificar a role_id)
-/login (POST): Usuário é autenticado no sistema
-/user (GET): Pega o usuário que está logado no sistema
-/type_user: (GET): Exibe o tipo do usuário logado no sistema
+/ (GET): Cria um usuário (podendo ser do tipo lojista ou normal, verificar a role_id) <br>
+/login (POST): Usuário é autenticado no sistema <br>
+/user (GET): Pega o usuário que está logado no sistema <br>
+/type_user: (GET): Exibe o tipo do usuário logado no sistema <br>
 /transaction (POST): Realiza a transação entre usuários
