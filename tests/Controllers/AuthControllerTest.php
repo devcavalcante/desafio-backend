@@ -24,15 +24,15 @@ class AuthControllerTest extends TestCase
     public function testUserCanLoginWithCorrectCredentials()
     {
         $this->artisan('passport:install');
-        $user = [ 
-            'email' => 'lojista@gmail.com',
+        $create = User::factory()->create();
+        $user = [
+            'email' => $create->email,
             'password' => 'midias123'
         ];
 
-
         $request = $this->post(route('login'), $user);
         $request->assertResponseStatus(200);
-        $request->seeJsonStructure(['access_token','expires_at', 'user']);
+        $request->seeJsonStructure(['access_token', 'expires_at', 'user']);
     }
 
     public function testUserCannotLoginWithWrongPassword()
@@ -61,5 +61,4 @@ class AuthControllerTest extends TestCase
         $request->assertResponseStatus(401);
         $request->seeJson(['errors' => 'Invalid credentials']);
     }
-
 }
