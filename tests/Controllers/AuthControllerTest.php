@@ -1,8 +1,5 @@
 <?php
 
-
-// namespace Controllers;
-
 use App\Models\User;
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\TestCase;

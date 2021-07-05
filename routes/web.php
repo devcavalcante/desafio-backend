@@ -21,5 +21,5 @@ $router->get('/', function () use ($router) {
 $router->post('/login', ['as' => 'login', 'uses' => 'AuthController@authenticate']);
 $router->get('/user', ['uses' => 'UserController@getUserLogged']);
 $router->get('/type_user', ['uses' => 'UserController@showTypeUser']);
-$router->get('/testes', ['as' => 'teste', 'uses' => 'TransactionController@transaction']);
+$router->post('/transaction', ['as' => 'transaction', 'uses' => 'TransactionController@transaction']);
 
