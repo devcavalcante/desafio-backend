@@ -33,7 +33,7 @@ class AuthController extends Controller
             $result = $this->repository->authenticate($fields);
             return response()->json($result);
         } catch (AuthorizationException $exception) {
-            return response()->json(['errors' => $exception->getMessage()], 401);
+            return response()->json(['errors' => $exception->getMessage()], $exception->getCode());
         } catch (\Exception $exception) {
             return response()->json(['errors' =>  $exception->getMessage()], 500);
         }
