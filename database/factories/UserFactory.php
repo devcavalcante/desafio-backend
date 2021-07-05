@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'document' => rand(11111111,99999999),
             'password' => Hash::make('midias123'),
-            'role_id' => 'e0cb0a70-dbfb-11eb-8d19-0242ac130003',
+            'role_id' => Role::all()->random()->id,
         ];
     }
 }
