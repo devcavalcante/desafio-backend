@@ -13,7 +13,7 @@ Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinhei
 
 ## Transação
 - Lojistas só recebem transferência 
-- Usuários podem fazer transferências de uma conta para outra 
+- Usuários comuns podem fazer transferências de uma conta para outra 
 
 ## Como rodar esse projeto local
 No terminal:
