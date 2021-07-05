@@ -22,7 +22,7 @@ $ php -S localhost:8000 -t public <br>
 Digite no terminal: <br>
 $ docker-compose up -d --build <br>
 - Obs.: Caso de erro de permissão na pasta storage apenas rode na sua máquina local o comando: chmod -R 777 ./storage 
-- Abra o arquivo .env e faça as configurações para conectar ao seu banco.
+- Abra o arquivo .env e faça as configurações para conectar ao seu banco. <br>
 DB_CONNECTION=pgsql  
 DB_HOST=db  
 DB_PORT=5432  
