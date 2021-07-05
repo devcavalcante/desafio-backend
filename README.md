@@ -1,24 +1,36 @@
-# Lumen PHP Framework
+# Objetivo
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam transferências entre eles. Vamos nos atentar somente ao fluxo de transferência entre dois usuários.
+- 
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Tecnologias
 
-## Official Documentation
+- Lumen
+- PostgreSQL
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Como rodar esse projeto
+No terminal:
+$ git clone https://github.com/devcavalcante/desafio-backend.git
+$ cd desafio-backend <br>
+$ composer install <br>
+$ cp .env.example .env <br>
+$ php artisan migrate #antes de rodar este comando verifique sua configuracao com banco em .env <br>
+$ php artisan db:seed #para gerar os seeders dos tipos de usuários <br>
+$ php -S localhost:8000 -t public <br>
 
-## Contributing
+## Para subir no docker
+Digite no terminal:
+$ docker-compose up -d --build
+- Obs.: Caso de erro de permissão na pasta storage apenas rode na sua máquina local o comando: chmod -R 777 ./storage
+- Abra o arquivo .env e faça as configurações para conectar ao seu banco.
+DB_CONNECTION=pgsql  
+DB_HOST=db  
+DB_PORT=5432  
+DB_DATABASE= desafio-backend  
+DB_USERNAME=postgres  
+DB_PASSWORD=postgres
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Para subir no docker
+Digite no terminal
+$ docker-compose exec web sh
+$ php artisa migrate:fresh --seed
