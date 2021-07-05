@@ -5,10 +5,17 @@ Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinhei
 
 ## Tecnologias
 
-- Lumen
+- Lumen 
 - PostgreSQL
 
-## Como rodar esse projeto
+## Autenticação
+- Autenticação com Passport 
+
+## Transação
+- Lojistas só recebem transferência 
+- Usuários podem fazer transferências de uma conta para outra 
+
+## Como rodar esse projeto local
 No terminal:
 $ git clone https://github.com/devcavalcante/desafio-backend.git
 $ cd desafio-backend <br>
@@ -16,6 +23,7 @@ $ composer install <br>
 $ cp .env.example .env <br>
 $ php artisan migrate #antes de rodar este comando verifique sua configuracao com banco em .env <br>
 $ php artisan db:seed #para gerar os seeders dos tipos de usuários <br>
+$ php artisan passport:install
 $ php -S localhost:8000 -t public <br>
 
 ## Para subir no docker
