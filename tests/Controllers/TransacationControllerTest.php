@@ -21,11 +21,12 @@ class TransactionControllerTest extends TestCase
     public function testShopkeeperCannotTransfer()
     {
         $this->artisan('passport:install');
-        $user = User::factory()->create();
+        $user = User::factory()->create(['role_id' => 'e0cb0a70-dbfb-11eb-8d19-0242ac130003']);
+        $user2 = User::factory()->create();
         $transfer = [
             'value' => 10.00,
-            'payer_id' => '733f61a7-f805-3cf2-b807-a6a47c161dbe',
-            'payee_id' => '2d135efd-c863-31ff-a2f0-6846b2beda56'
+            'payer_id' => $user->id,
+            'payee_id' => $user2->id
         ];
         $request = $this->actingAs($user, 'api')
             ->post(route('transaction'), $transfer);
